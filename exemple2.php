@@ -18,7 +18,11 @@
             $note = $_POST['note_classique'];
             $result = '<p>La note classique \' '.$note.' \' correspond à la note américaine \' '.$notes[$note].' \'.</p>';
         }
+        echo $result;
+        return;
     }
+
+   
 ?>
 
 <html lang="fr">
@@ -30,7 +34,7 @@
 </head>
 <body>
     <h1>Correspondance des notes de musique classiques et anglaises</h1>
-    <form action="exemple2.php" method='post'>
+    <form action="exemple2.php" method='post' id="form1">
     <fieldset>
         <legend>Correspondance classique->anglaise</legend>
         <p>Choisissez une note:</p>
@@ -38,7 +42,7 @@
             <option value="">Choix</option>
             <?php
             foreach ($notes as $note_classique => $note_americaine) {
-                echo 'option value="' . $note_classique.'">'.$note_classique.'</option>';
+                echo '<option value="' . $note_classique.'">'.$note_classique.'</option>';
             }
             ?>
         </select>
@@ -51,8 +55,12 @@
         </div>
     </fieldset>
     </form>
-    <a href="exemple3.php">Origine des noms</a>
-    <div></div>
-    <script src="demande1.js"></script>
+    <a id="link1" href="exemple3.php">Origine des noms</a>
+    <div id="resultat">
+            <?php
+            echo $result;
+            ?>
+    </div>
+    <script src="exemple2.js" type="text/javascript"></script>
 </body>
 </html>
